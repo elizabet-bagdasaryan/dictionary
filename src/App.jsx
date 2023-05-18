@@ -8,7 +8,7 @@ import Search from "../public/search.png";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 function App() {
   const [word, setWord] = useState("");
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState(null);
 
   const searchWord = async () => {
     const response = await fetch(
@@ -18,7 +18,14 @@ function App() {
     const data = await response.json();
     setResults(data[0]);
   };
-
+  const header = () => {
+    const audio = results?.phonetics.find((phone) => phone.audio !== "").audio;
+    return {
+      audioUrl: audio,
+      word: results?.word,
+      phonetic: results?.phonetic,
+    };
+  };
   console.log(results);
   return (
     <>
@@ -49,7 +56,7 @@ function App() {
       </button>
       {results?.meanings?.length > 0 && (
         <>
-          <Header />
+          <Header {...header()} />
 
           {results.meanings.map((outputs, index) => {
             return <Outputs {...outputs} key={index} />;
