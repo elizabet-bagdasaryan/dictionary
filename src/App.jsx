@@ -6,6 +6,7 @@ import Book from "../public/book.png";
 import Arrow from "../public/arrow.png";
 import Search from "../public/search.png";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
+import Fonts from "./Fonts";
 function App() {
   const [word, setWord] = useState("");
   const [results, setResults] = useState(null);
@@ -32,11 +33,11 @@ function App() {
       <div className="my-2 h-14 flex flex-row items-center space justify-between">
         <img src={Book}></img>
         <div className="my-2 h-14 flex flex-row items-center ">
-          <div className="my-2 h-14 flex flex-row items-center">
+          {/* <div className="my-2 h-14 flex flex-row items-center">
             <p>Sans Serif</p>
             <img src={Arrow}></img>
-          </div>
-
+          </div> */}
+          <Fonts />
           <div className="h-6 border border-gray-300"></div>
           <label className="relative inline-flex items-center cursor-pointer">
             <input type="checkbox" value="" className="sr-only peer" />
