@@ -6,13 +6,14 @@ import Book from "./assets/book.png";
 import Search from "./assets/search.png";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import Fonts from "./Fonts";
-
+import SadEmoji from "./assets/sad.png";
 function App() {
   const [word, setWord] = useState("");
   const [results, setResults] = useState(null);
   const [darkMode, setDarkMode] = useState(false);
   const [isEmpty, setIsEmpty] = useState(false);
-  const [notFound, setNotFound] = useState(false);
+  const [isNotFound, setIsNotFound] = useState(false);
+
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark-mode");
@@ -24,7 +25,7 @@ function App() {
   const searchWord = async () => {
     if (word.trim() === "") {
       setIsEmpty(true);
-      setNotFound(false);
+      setIsNotFound(false);
       return;
     }
 
@@ -34,25 +35,34 @@ function App() {
       "https://api.dictionaryapi.dev/api/v2/entries/en/" + word
     );
 
-    const data = await response.json();
-
-    if (Array.isArray(data) && data.length === 0) {
-      setNotFound(true);
-      setResults(null);
-    } else {
-      setNotFound(false);
+    if (response.ok) {
+      const data = await response.json();
       setResults(data[0]);
+      setIsNotFound(false);
+    } else {
+      setResults(null);
+      setIsNotFound(true);
     }
   };
 
   const header = () => {
-    const audio = results?.phonetics.find((phone) => phone.audio !== "").audio;
+    if (!results) {
+      return {
+        audioUrl: null,
+        word: null,
+        phonetic: null,
+      };
+    }
+
+    const audio = results.phonetics.find((phone) => phone.audio !== "")?.audio;
+
     return {
       audioUrl: audio,
-      word: results?.word,
-      phonetic: results?.phonetic,
+      word: results.word,
+      phonetic: results.phonetic,
     };
   };
+
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       searchWord();
@@ -103,7 +113,17 @@ function App() {
       {isEmpty && (
         <p className="text-[#FF5252] mt-2">Whoops, can't be empty...</p>
       )}
-      {notFound && <p>No Definitions Found</p>}
+      {isNotFound && (
+        <div className="flex flex-col items-center justify-center mt-28">
+          <img src={SadEmoji}></img>
+          <h2 className="font-bold mt-4 mb-4">No Definitions Found</h2>
+          <p className="text-[#757575] text-center">
+            Sorry pal, we couldn't find definitions for the word you were
+            looking for. You can try the <br />
+            search again at later time or head to the web instead.
+          </p>
+        </div>
+      )}
       {results?.meanings?.length > 0 && (
         <>
           <Header {...header()} />

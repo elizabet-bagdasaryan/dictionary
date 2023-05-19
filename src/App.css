@@ -80,3 +80,13 @@ body {
 .dark-mode h4 {
   color: white;
 }
+
+.dark-mode h2 {
+  color: white;
+}
+
+@media (min-width: 1336px) {
+  body {
+    padding: 0 20vw;
+  }
+}
