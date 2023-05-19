@@ -79,11 +79,11 @@ function App() {
         <div className="my-2 h-14 flex flex-row items-center header-right">
           <Fonts darkMode={darkMode} />
           <div className="h-6 border border-gray-300"></div>
-          <label className="relative inline-flex items-center cursor-pointer">
+          <label className="relative inline-flex items-center cursor-pointer switch">
             <input
               type="checkbox"
               value=""
-              className="sr-only peer"
+              className="sr-only peer "
               onChange={handleDarkModeToggle}
             />
             <div

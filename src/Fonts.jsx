@@ -90,7 +90,7 @@ const Fonts = ({ darkMode }) => {
 
   return (
     <section className={`fonts-container ${darkMode ? "dark-mode" : ""}`}>
-      <div className="relative w-40">
+      <div className="relative w-38">
         <div
           className={
             "selected-font w-full px-4 py-2 rounded bg-white text-gray-700 leading-tight focus:outline-none cursor-pointer flex"

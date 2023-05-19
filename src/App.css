@@ -84,6 +84,9 @@ body {
 .dark-mode h2 {
   color: white;
 }
+.switch {
+  margin: 0 10px;
+}
 
 @media (min-width: 1336px) {
   body {
