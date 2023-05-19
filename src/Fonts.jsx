@@ -1,40 +1,73 @@
-// import React, { useState } from "react";
-// import Arrow from "../public/arrow.png";
-// const FontDropdown = () => {
-//   const [selectedFont, setSelectedFont] = useState("");
+// import React, { useState, useEffect } from "react";
+// import Arrow from "./assets/arrow.png";
 
-//   const handleFontChange = (e) => {
-//     const font = e.target.value;
+// const Fonts = ({ darkMode }) => {
+//   const [selectedFont, setSelectedFont] = useState("sans-serif");
+//   const [appliedFont, setAppliedFont] = useState("sans-serif");
+//   const [isOptionsVisible, setOptionsVisible] = useState(false);
+//   useEffect(() => {
+//     setAppliedFont(getAppliedFont());
+//   }, []);
+
+//   const getAppliedFont = () => {
+//     const bodyStyle = document.defaultView.getComputedStyle(document.body);
+//     return bodyStyle.fontFamily;
+//   };
+
+//   const handleFontChange = (font) => {
 //     setSelectedFont(font);
 //     document.body.style.fontFamily = font;
+//     setAppliedFont(getAppliedFont());
+//   };
+//   const handleOptionsVisibility = (isVisible) => {
+//     setOptionsVisible(isVisible);
 //   };
 
 //   return (
-//     <div className="relative w-40">
-//       <select
-//         className="w-full px-4 py-2 border border-gray-300 rounded appearance-none bg-white text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-//         value={selectedFont}
-//         onChange={handleFontChange}
-//       >
-//         <option value="">Select Font</option>
-//         <option value="sans-serif">Sans-serif</option>
-//         <option value="serif">Serif</option>
-//         <option value="monospace">Monospace</option>
-//       </select>
-//       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-//         <img src={Arrow} alt="Dropdown Arrow" className="h-2 w-3" />
+//     <section className={`fonts-container ${darkMode ? "dark-mode" : ""}`}>
+//       <div className="relative w-32">
+//         <div
+//           className={
+//             "w-full px-4 py-2 rounded bg-white text-gray-700 leading-tight focus:outline-none cursor-pointer flex selected-font "
+//           }
+//           onClick={() => handleOptionsVisibility(!isOptionsVisible)}
+//         >
+//           {selectedFont}
+//           <img src={Arrow} className="h-2 w-3 ml-2" />
+//         </div>
+//         <div className="absolute top-full left-0 mt-1 bg-white shadow-md dropdown pr-8 pt-2">
+//           <div
+//             className="px-4 py-2 cursor-pointer hover:bg-gray-200"
+//             onClick={() => handleFontChange("sans-serif")}
+//           >
+//             Sans-serif
+//           </div>
+//           <div
+//             className="px-4 py-2 cursor-pointer hover:bg-gray-200"
+//             onClick={() => handleFontChange("serif")}
+//           >
+//             Serif
+//           </div>
+//           <div
+//             className="px-4 py-2 cursor-pointer hover:bg-gray-200"
+//             onClick={() => handleFontChange("monospace")}
+//           >
+//             Monospace
+//           </div>
+//         </div>
 //       </div>
-//     </div>
+//     </section>
 //   );
 // };
 
-// export default FontDropdown;
+// export default Fonts;
 import React, { useState, useEffect } from "react";
-import Arrow from "../public/arrow.png";
+import Arrow from "./assets/arrow.png";
 
-const FontDropdown = () => {
+const Fonts = ({ darkMode }) => {
   const [selectedFont, setSelectedFont] = useState("sans-serif");
   const [appliedFont, setAppliedFont] = useState("sans-serif");
+  const [isOptionsVisible, setOptionsVisible] = useState(false);
 
   useEffect(() => {
     setAppliedFont(getAppliedFont());
@@ -45,29 +78,53 @@ const FontDropdown = () => {
     return bodyStyle.fontFamily;
   };
 
-  const handleFontChange = (e) => {
-    const font = e.target.value;
+  const handleFontChange = (font) => {
     setSelectedFont(font);
     document.body.style.fontFamily = font;
     setAppliedFont(getAppliedFont());
   };
 
+  const handleOptionsVisibility = (isVisible) => {
+    setOptionsVisible(isVisible);
+  };
+
   return (
-    <div className="relative w-40">
-      <select
-        className="w-full px-4 py-2  rounded appearance-none bg-white text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        value={selectedFont}
-        onChange={handleFontChange}
-      >
-        <option value="sans-serif">Sans-serif</option>
-        <option value="serif">Serif</option>
-        <option value="monospace">Monospace</option>
-      </select>
-      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-        <img src={Arrow} alt="Dropdown Arrow" className="h-2 w-3" />
+    <section className={`fonts-container ${darkMode ? "dark-mode" : ""}`}>
+      <div className="relative w-40">
+        <div
+          className={
+            "selected-font w-full px-4 py-2 rounded bg-white text-gray-700 leading-tight focus:outline-none cursor-pointer flex"
+          }
+          onClick={() => handleOptionsVisibility(!isOptionsVisible)}
+        >
+          <span className="capitalize font-bold">{selectedFont}</span>
+          <img src={Arrow} alt="Dropdown Arrow" className="h-2 w-3 ml-2" />
+        </div>
+        {isOptionsVisible && (
+          <div className="absolute top-full left-0 mt-1 bg-white shadow-md dropdown  pr-12 pt-2 pb-2 font-bold">
+            <div
+              className="px-4 py-2 cursor-pointer hover:text-purple-600"
+              onClick={() => handleFontChange("sans-serif")}
+            >
+              Sans-serif
+            </div>
+            <div
+              className="px-4 py-2 cursor-pointer hover:text-purple-600"
+              onClick={() => handleFontChange("serif")}
+            >
+              Serif
+            </div>
+            <div
+              className="px-4 py-2 cursor-pointer hover:text-purple-600"
+              onClick={() => handleFontChange("monospace")}
+            >
+              Monospace
+            </div>
+          </div>
+        )}
       </div>
-    </div>
+    </section>
   );
 };
 
-export default FontDropdown;
+export default Fonts;
