@@ -87,6 +87,9 @@ body {
 .switch {
   margin: 0 10px;
 }
+input[type="text"]:focus {
+  border: 1px solid #a445ed;
+}
 
 @media (min-width: 1336px) {
   body {
