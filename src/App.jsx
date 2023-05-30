@@ -7,6 +7,8 @@ import Search from "./assets/search.png";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import Fonts from "./Fonts";
 import SadEmoji from "./assets/sad.png";
+import Link from "./assets/export.png";
+
 function App() {
   const [word, setWord] = useState("");
   const [results, setResults] = useState(null);
@@ -128,9 +130,26 @@ function App() {
         <>
           <Header {...header()} />
 
-          {results.meanings.map((outputs, index) => {
-            return <Outputs {...outputs} key={index} />;
-          })}
+          {results.meanings.map((meaning, index) => (
+            <Outputs
+              key={index}
+              partOfSpeech={meaning.partOfSpeech}
+              definitions={meaning.definitions}
+              synonyms={meaning.synonyms}
+              word={word}
+            />
+          ))}
+          <hr className="mt-6 mb-4" />
+          <div className="flex items-center">
+            <p className="text-[#757575] mr-4">Source </p>
+            <a
+              href={`https://en.wiktionary.org/wiki/${word}`}
+              className="flex text-[#2D2D2D] underline"
+            >
+              {`https://en.wiktionary.org/wiki/${word}`}{" "}
+              <img src={Link} className="w-3 h-3 ml-2 mt-1.5"></img>
+            </a>
+          </div>
         </>
       )}
     </div>

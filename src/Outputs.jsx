@@ -1,6 +1,6 @@
 import React from "react";
 
-function Outputs({ partOfSpeech, definitions, synonyms }) {
+function Outputs({ partOfSpeech, definitions, synonyms, word }) {
   return (
     <>
       <div className="p-4">
@@ -10,16 +10,19 @@ function Outputs({ partOfSpeech, definitions, synonyms }) {
             <hr className="w-full ml-20"></hr>
           </div>
           <p className="text-[#757575] mt-3 font-semibold mb-4">Meaning</p>
-          <ul className="list-disc px-10 text-gray-800 text-sm space-y-2">
-            {definitions.map((i, index) => (
-              <li key={index}>{i.definition}</li>
-            ))}
-          </ul>
+          {definitions.map((definition, index) => (
+            <div key={index}>
+              <p>{definition.definition}</p>
+              {definition.example && (
+                <p className="text-[#757575] mt-2">"{definition.example}"</p>
+              )}
+            </div>
+          ))}
           {synonyms.length > 0 && (
             <p className="text-[#757575] text-sm mt-6">
               Synonyms{" "}
               {synonyms.map((synonym, index) => (
-                <span key={index} className="text-[#A445ED] mx-1 font-bold ">
+                <span key={index} className="text-[#A445ED] mx-1 font-bold">
                   {synonym}
                 </span>
               ))}
