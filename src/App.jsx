@@ -85,7 +85,7 @@ function App() {
             <input
               type="checkbox"
               value=""
-              className="sr-only peer "
+              className="sr-only peer"
               onChange={handleDarkModeToggle}
             />
             <div
@@ -93,9 +93,10 @@ function App() {
                 darkMode ? "dark:bg-gray-700" : ""
               } peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all ${
                 darkMode ? "dark:border-gray-600" : ""
-              } peer-checked:bg-purple-600`}
+              } peer-checked:bg-purple-600 animate-toggle`}
             ></div>
           </label>
+
           <DarkModeOutlinedIcon className="moon color-gray" />
         </div>
       </div>

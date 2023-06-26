@@ -37,28 +37,30 @@ const Fonts = ({ darkMode }) => {
           <span className="capitalize font-bold">{selectedFont}</span>
           <img src={Arrow} alt="Dropdown Arrow" className="h-2 w-3 ml-2" />
         </div>
-        {isOptionsVisible && (
-          <div className="absolute top-full left-0 mt-1 bg-white shadow-md dropdown  pr-12 pt-2 pb-2 font-bold">
-            <div
-              className="px-4 py-2 cursor-pointer hover:text-purple-600"
-              onClick={() => handleFontChange("sans-serif")}
-            >
-              Sans-serif
-            </div>
-            <div
-              className="px-4 py-2 cursor-pointer hover:text-purple-600"
-              onClick={() => handleFontChange("serif")}
-            >
-              Serif
-            </div>
-            <div
-              className="px-4 py-2 cursor-pointer hover:text-purple-600"
-              onClick={() => handleFontChange("monospace")}
-            >
-              Monospace
-            </div>
+        <div
+          className={`absolute top-full left-0 mt-1 bg-white shadow-md dropdown pr-12 pt-2 pb-2 font-bold ${
+            isOptionsVisible ? "opacity-100" : "opacity-0"
+          } transition-opacity duration-300`}
+        >
+          <div
+            className="px-4 py-2 cursor-pointer hover:text-purple-600"
+            onClick={() => handleFontChange("sans-serif")}
+          >
+            Sans-serif
           </div>
-        )}
+          <div
+            className="px-4 py-2 cursor-pointer hover:text-purple-600"
+            onClick={() => handleFontChange("serif")}
+          >
+            Serif
+          </div>
+          <div
+            className="px-4 py-2 cursor-pointer hover:text-purple-600"
+            onClick={() => handleFontChange("monospace")}
+          >
+            Monospace
+          </div>
+        </div>
       </div>
     </section>
   );
