@@ -88,15 +88,14 @@ function App() {
               className="sr-only peer"
               onChange={handleDarkModeToggle}
             />
-            <div
-              className={`w-11 h-6 bg-gray-400 rounded-full peer-focus:outline-none ${
-                darkMode ? "dark:bg-gray-700" : ""
-              } peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all ${
-                darkMode ? "dark:border-gray-600" : ""
-              } peer-checked:bg-purple-600 animate-toggle`}
-            ></div>
+            <div className="w-14 h-8 bg-gray-400 rounded-full relative py-1 px-1">
+              <div
+                className={`absolute h-6 w-6 rounded-full bg-white transition-transform duration-300 ease-in-out transform ${
+                  darkMode ? "translate-x-full" : ""
+                }`}
+              ></div>
+            </div>
           </label>
-
           <DarkModeOutlinedIcon className="moon color-gray" />
         </div>
       </div>
