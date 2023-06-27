@@ -113,7 +113,7 @@ function App() {
         <img src={Search} width={16} />
       </button>
       {isEmpty && (
-        <p className="text-[#FF5252] mt-2">Whoops, can't be empty...</p>
+        <h5 className="text-[#FF5252] mt-2">Whoops, can't be empty...</h5>
       )}
       {isNotFound && (
         <div className="flex flex-col items-center justify-center mt-28">
