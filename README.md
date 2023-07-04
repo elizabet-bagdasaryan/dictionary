@@ -13,7 +13,7 @@ The Dictionary Application is a feature-rich software tool that enables users to
 - **Audio Pronunciation**: Users can listen to the audio pronunciations of words, helping them learn proper pronunciation and improve their spoken language skills.
 - **Font Customization**: Users can change the font of the displayed texts to suit their preferences and enhance readability.
 - **Light and Dark Mode**: The application supports both light and dark modes, providing a comfortable reading experience in different lighting environments.
-- **User-friendly Interface**: The application features a clean and user-friendly interface, making it easy to navigate, search for words, and access relevant information.
+- **User-friendly Interface**: The application features a clean and user-friendly interface, making it easy to navigate, search for words, and access relevant information, visually appealing animations.
 
 ## Installation
 
