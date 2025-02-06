@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Arrow from "./assets/arrow.png";
+import Arrow from "../assets/arrow.png";
 
 const Fonts = ({ darkMode }) => {
   const [selectedFont, setSelectedFont] = useState("sans-serif");
