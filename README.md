@@ -31,7 +31,8 @@ The Dictionary Application is a feature-rich software tool that enables users to
 6. Click on the audio icon to listen to the correct pronunciation of the word.
 7. Customize the font of the displayed texts by accessing the settings menu.
 8. Toggle between light and dark modes to suit your reading environment and preference.
-9. Enjoy using the Dictionary Application with personalized font settings and your preferred theme!
+9. Go to about page to see the short description with some animations.
+10. Enjoy using the Dictionary Application with personalized font settings and your preferred theme!
 
 ## Contributing
 
